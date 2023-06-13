@@ -23,7 +23,7 @@ class MyGUI:
         self.button.pack(padx=10,pady=10)
 
 
-
+        
 
         self.root.mainloop()
 
@@ -35,14 +35,14 @@ class MyGUI:
             ('All files', '*.*')
         )
 
-        filename = fd.askopenfilename(
+        self.filename = fd.askopenfilename(
             title='Open a file',
             initialdir='/',
             filetypes=filetypes)
 
         showinfo(
             title='You Have selected:',
-            message=filename
+            message=self.filename
         )
 
 
@@ -53,14 +53,14 @@ class MyGUI:
             ('All files', '*.*')
         )
 
-        filename = fd.askopenfilename(
+        self.filename = fd.askopenfilename(
             title='Open a file',
             initialdir='/',
             filetypes=filetypes)
 
         showinfo(
             title='You Have selected:',
-            message=filename
+            message=self.filename
         )
 
 
@@ -68,8 +68,8 @@ class MyGUI:
 
 
 def main():
-    MyGUI()
-
+    ConstructedGUI=MyGUI()
+    print(ConstructedGUI.filename)
 
 if __name__ == '__main__':
     main()
