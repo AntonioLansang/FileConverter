@@ -1,30 +1,37 @@
 from PIL import Image as img
 import os
 import tkinter as tk
-
-def main():
-   
-#This is the basic logic that we want to do.
-# Now we just need to implement tkinter to make it cool
-  #  Source=img.open(r'/Users/antoniolansang/Downloads/TestFolder/20230531_115032(1).jpg')
-   # Source.save(r'/Users/antoniolansang/Downloads/TestFolder/test.png')
-
-    root = tk.Tk()
-
-    #Sets the width and height of a Window
-    root.geometry("800x500")
-
-    #Sets the titlebar name
-    root.title("File Conversion")
+from tkinter import ttk
+from tkinter import filedialog as fd
+from tkinter.messagebox import showinfo
 
 
-    label = tk.Label(root, text="Hello", font=('Arial', 18))
-    label.pack()
+class MyGUI:
+
+    def __init__(self):
+        self.root=tk.Tk()
+        
+        self.label = tk.Label(self.root, text="Message", font=('Arial', 18))
+        self.label.pack(padx=10, pady=10)
+
+        self.textbox=tk.Text(self.root, font=('Arial', 8))
+        self.textbox.pack(padx=10,pady=10)
+
+        self.check_state= tk.IntVar()
+        
+
+        self.check=tk.Checkbutton(self.root, text="Show", font=('Arial', 20), variable=self.check_state)
+        self.check.pack(padx=20,pady=20)
+       
+
+        self.button=tk.Button(self.root, text="Show Message", font=('Arial',18), command=self.show_message)
+        self.button.pack(padx=10,pady=10)
 
 
-    textbox=tk.Text(root, height=3, font=('Arial', 16))
-    textbox.pack()
+        self.root.mainloop()
 
-    root.mainloop()
-if __name__ == '__main__':
-    main()
+
+    def show_message(self):
+        print("hello")
+
+MyGUI()
