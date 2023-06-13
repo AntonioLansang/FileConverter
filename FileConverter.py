@@ -8,30 +8,42 @@ from tkinter.messagebox import showinfo
 
 class MyGUI:
 
+    #The constructor for the GUI
     def __init__(self):
         self.root=tk.Tk()
         
-        self.label = tk.Label(self.root, text="Message", font=('Arial', 18))
+        self.label = tk.Label(self.root, text="Select a File to convert", font=('Arial', 18))
         self.label.pack(padx=10, pady=10)
+        self.root.geometry("500x500")
 
-        self.textbox=tk.Text(self.root, font=('Arial', 8))
-        self.textbox.pack(padx=10,pady=10)
-
-        self.check_state= tk.IntVar()
-        
-
-        self.check=tk.Checkbutton(self.root, text="Show", font=('Arial', 20), variable=self.check_state)
-        self.check.pack(padx=20,pady=20)
-       
-
-        self.button=tk.Button(self.root, text="Show Message", font=('Arial',18), command=self.show_message)
+        self.button=tk.Button(self.root, text="Open File Explorer", font=('Arial',18), command=self.SelectFile)
         self.button.pack(padx=10,pady=10)
 
 
         self.root.mainloop()
 
+#It is important that we have the word "self" in the parameters because we are in a class
+    def SelectFile(self):
+        filetypes = (
+            ('text files', '*.txt'),
+            ('audio files', '*.m4a'),
+            ('All files', '*.*')
+        )
 
-    def show_message(self):
-        print("hello")
+        filename = fd.askopenfilename(
+            title='Open a file',
+            initialdir='/',
+            filetypes=filetypes)
 
-MyGUI()
+        showinfo(
+            title='You Have selected:',
+            message=filename
+        )
+
+
+def main():
+
+    MyGUI()
+
+if __name__ == '__main__':
+    main()
