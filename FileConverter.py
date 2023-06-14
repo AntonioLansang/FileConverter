@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
-
+from pydub import AudioSegment
 
 class MyGUI:
 
@@ -66,11 +66,16 @@ class MyGUI:
 
 
 
+def Convert(RetrievedFile):
+    
+    AudioSegment.from_file(RetrievedFile).export("Output.mp3", format="mp3")
 
 
 def main():
     ConstructedGUI=MyGUI()
     RetrievedFile=ConstructedGUI.filename
+    Convert(RetrievedFile)
+
 
 if __name__ == '__main__':
     main()
