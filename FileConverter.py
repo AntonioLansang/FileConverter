@@ -22,8 +22,8 @@ class MyGUI:
         self.button=tk.Button(self.root, text="Select Audio File", font=('Arial',18), command=self.SelectAudioFile)
         self.button.pack(padx=10,pady=10)
 
-
-        
+#        self.label = tk.Label(self.root, text="You have selected: " + self.filename, font=('Arial', 20))
+#        self.label.pack(padx=20, pady=20)
 
         self.root.mainloop()
 
@@ -35,6 +35,7 @@ class MyGUI:
             ('All files', '*.*')
         )
 
+#Since we are in a class, we need to put self in front of file name in order to properly retrieve it from our object
         self.filename = fd.askopenfilename(
             title='Open a file',
             initialdir='/',
@@ -69,7 +70,7 @@ class MyGUI:
 
 def main():
     ConstructedGUI=MyGUI()
-    print(ConstructedGUI.filename)
+    RetrievedFile=ConstructedGUI.filename
 
 if __name__ == '__main__':
     main()
